@@ -139,7 +139,7 @@ function LoginForm() {
   )
 }
 
-function LoginSkeleton() {
+export function LoginSkeleton() {
   return (
     <div className="w-full max-w-md space-y-8 px-4">
       <div className="space-y-2 text-center">

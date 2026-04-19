@@ -23,16 +23,13 @@ import { logoutUser } from '@/app/(auth)/login/actions'
 import { useRouter } from 'next/navigation'
 
 export function TopBar() {
-  const { user, setActiveEntity, setActiveBranch } = useAuthStore()
-  const { isMobileOpen, setIsMobileOpen, isCollapsed } = useSidebar()
+  const { user, setActiveEntity } = useAuthStore()
+  const { setIsMobileOpen } = useSidebar()
   const router = useRouter()
 
   // Entity/branch switcher - placeholder until we fetch from DB
   const entities = [
     { id: '00000000-0000-0000-0000-000000000010', name: 'PT W.System Indonesia' },
-  ]
-  const branches = [
-    { id: '00000000-0000-0000-0000-000000000100', name: 'Kantor Pusat Jakarta' },
   ]
 
   const handleLogout = async () => {

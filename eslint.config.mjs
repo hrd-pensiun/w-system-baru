@@ -13,6 +13,12 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // TanStack Table's useReactTable returns functions that can't be memoized
+      "react-hooks/incompatible-library": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;
