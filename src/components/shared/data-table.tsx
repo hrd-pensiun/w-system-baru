@@ -41,6 +41,7 @@ interface DataTableProps<TData, TValue> {
   emptyTitle?: string
   emptyDescription?: string
   pageSize?: number
+  meta?: Record<string, unknown>
 }
 
 export function DataTable<TData, TValue>({
@@ -51,6 +52,7 @@ export function DataTable<TData, TValue>({
   emptyTitle = 'Tidak ada data',
   emptyDescription = 'Belum ada data yang tersedia.',
   pageSize = 10,
+  meta,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -59,6 +61,7 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
+    meta,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
