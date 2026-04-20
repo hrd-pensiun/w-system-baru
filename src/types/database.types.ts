@@ -846,6 +846,92 @@ export interface Database {
           is_talent_pool?: boolean
         }
       }
+      employee_reimbursements: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          category: string
+          description: string | null
+          amount: number
+          receipt_url: string | null
+          status: string
+          approved_by: string | null
+          approved_at: string | null
+          paid_at: string | null
+          notes: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          category: string
+          amount: number
+          status?: string
+        }
+        Update: {
+          category?: string
+          description?: string | null
+          amount?: number
+          receipt_url?: string | null
+          status?: string
+          approved_by?: string | null
+          approved_at?: string | null
+          paid_at?: string | null
+          notes?: string | null
+        }
+      }
+      business_trips: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          destination: string
+          purpose: string | null
+          departure_date: string
+          return_date: string
+          budget: number
+          actual_cost: number | null
+          status: string
+          approved_by: string | null
+          approved_at: string | null
+          notes: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          destination: string
+          departure_date: string
+          return_date: string
+          budget?: number
+          status?: string
+        }
+        Update: {
+          destination?: string
+          purpose?: string | null
+          departure_date?: string
+          return_date?: string
+          budget?: number
+          actual_cost?: number | null
+          status?: string
+          approved_by?: string | null
+          approved_at?: string | null
+          notes?: string | null
+        }
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>
