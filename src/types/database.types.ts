@@ -477,6 +477,199 @@ export interface Database {
           is_active?: boolean
         }
       }
+      employees: {
+        Row: {
+          id: string
+          tenant_id: string
+          nik: string
+          name: string
+          entity_id: string | null
+          branch_id: string | null
+          department_id: string | null
+          position_id: string | null
+          grade_id: string | null
+          work_shift_id: string | null
+          email: string | null
+          phone: string | null
+          birth_date: string | null
+          gender: string | null
+          religion: string | null
+          marital_status: string | null
+          education_level: string | null
+          npwp: string | null
+          address: string | null
+          bank_name: string | null
+          bank_account: string | null
+          bank_account_name: string | null
+          hire_date: string
+          employment_status: string
+          ptkp_status: string
+          base_salary: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          nik: string
+          name: string
+          hire_date: string
+          employment_status?: string
+        }
+        Update: {
+          nik?: string
+          name?: string
+          employment_status?: string
+          base_salary?: number
+          is_active?: boolean
+        }
+      }
+      employee_contracts: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          contract_type: string
+          contract_no: string | null
+          start_date: string
+          end_date: string | null
+          status: string
+          notes: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          contract_type: string
+          start_date: string
+          status?: string
+        }
+        Update: {
+          end_date?: string | null
+          status?: string
+          notes?: string
+        }
+      }
+      employee_leaves: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          leave_type_id: string
+          start_date: string
+          end_date: string
+          total_days: number
+          reason: string | null
+          attachment_url: string | null
+          status: string
+          approved_by: string | null
+          approved_at: string | null
+          rejection_reason: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          leave_type_id: string
+          start_date: string
+          end_date: string
+          total_days: number
+          status?: string
+        }
+        Update: {
+          status?: string
+          approved_by?: string | null
+          rejection_reason?: string | null
+        }
+      }
+      employee_overtimes: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          overtime_date: string
+          start_time: string
+          end_time: string
+          total_hours: number
+          day_type: string
+          reason: string | null
+          status: string
+          approved_by: string | null
+          approved_at: string | null
+          rejection_reason: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          overtime_date: string
+          start_time: string
+          end_time: string
+          total_hours: number
+          day_type: string
+          status?: string
+        }
+        Update: {
+          status?: string
+          approved_by?: string | null
+          rejection_reason?: string | null
+        }
+      }
+      employee_leave_balances: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          leave_type_id: string
+          year: number
+          quota: number
+          used: number
+          carry_over: number
+          carry_over_used: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          leave_type_id: string
+          year: number
+          quota?: number
+          used?: number
+          carry_over?: number
+        }
+        Update: {
+          quota?: number
+          used?: number
+          carry_over?: number
+          carry_over_used?: number
+        }
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>

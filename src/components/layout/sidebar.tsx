@@ -34,12 +34,12 @@ const navGroups = [
   {
     title: 'HR',
     items: [
-      { href: '/hr/karyawan', label: 'Karyawan', icon: Users },
+      { href: '/hr/employees', label: 'Karyawan', icon: Users },
       { href: '/hr/master-data', label: 'Master Data', icon: Database },
       { href: '/hr/salary-config', label: 'Komponen Gaji', icon: PiggyBank },
       { href: '/hr/payroll-config', label: 'Payroll Config', icon: Wallet },
       { href: '/hr/presensi', label: 'Presensi', icon: Clock },
-      { href: '/hr/cuti', label: 'Cuti & Lembur', icon: CalendarDays },
+      { href: '/hr/leave-overtime', label: 'Cuti & Lembur', icon: CalendarDays },
     ],
   },
   {
