@@ -751,6 +751,101 @@ export interface Database {
           auto_clock_out?: boolean
         }
       }
+      hr_recruitments: {
+        Row: {
+          id: string
+          tenant_id: string
+          branch_id: string | null
+          department_id: string | null
+          position_id: string | null
+          title: string
+          description: string | null
+          requirements: string | null
+          employment_type: string
+          salary_min: number | null
+          salary_max: number | null
+          location: string
+          is_remote: boolean
+          status: string
+          opened_at: string | null
+          closed_at: string | null
+          vacancies: number
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          title: string
+          employment_type?: string
+          location?: string
+          status?: string
+          vacancies?: number
+        }
+        Update: {
+          title?: string
+          description?: string | null
+          requirements?: string | null
+          employment_type?: string
+          salary_min?: number | null
+          salary_max?: number | null
+          location?: string
+          is_remote?: boolean
+          status?: string
+          opened_at?: string | null
+          closed_at?: string | null
+          vacancies?: number
+        }
+      }
+      hr_applicants: {
+        Row: {
+          id: string
+          tenant_id: string
+          recruitment_id: string
+          full_name: string
+          email: string | null
+          phone: string | null
+          current_company: string | null
+          current_position: string | null
+          source: string
+          resume_url: string | null
+          stage: string
+          applied_at: string
+          notes: string | null
+          rating: number | null
+          is_talent_pool: boolean
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          recruitment_id: string
+          full_name: string
+          source?: string
+          stage?: string
+        }
+        Update: {
+          full_name?: string
+          email?: string | null
+          phone?: string | null
+          current_company?: string | null
+          current_position?: string | null
+          source?: string
+          stage?: string
+          notes?: string | null
+          rating?: number | null
+          is_talent_pool?: boolean
+        }
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>
