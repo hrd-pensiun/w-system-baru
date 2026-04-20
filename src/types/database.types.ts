@@ -670,6 +670,87 @@ export interface Database {
           carry_over_used?: number
         }
       }
+      employee_attendances: {
+        Row: {
+          id: string
+          tenant_id: string
+          employee_id: string
+          branch_id: string | null
+          date: string
+          clock_in: string | null
+          clock_out: string | null
+          clock_in_lat: number | null
+          clock_in_lng: number | null
+          clock_out_lat: number | null
+          clock_out_lng: number | null
+          status: string
+          late_minutes: number
+          early_leave_minutes: number
+          work_hours: number
+          notes: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          employee_id: string
+          branch_id?: string | null
+          date: string
+          clock_in?: string | null
+          clock_out?: string | null
+          status?: string
+          notes?: string | null
+        }
+        Update: {
+          clock_in?: string | null
+          clock_out?: string | null
+          status?: string
+          late_minutes?: number
+          early_leave_minutes?: number
+          work_hours?: number
+          notes?: string | null
+        }
+      }
+      attendance_settings: {
+        Row: {
+          id: string
+          tenant_id: string
+          branch_id: string | null
+          work_shift_id: string | null
+          work_calendar_id: string | null
+          late_tolerance_minutes: number
+          early_leave_tolerance_minutes: number
+          geofence_radius_meters: number
+          require_photo: boolean
+          require_location: boolean
+          auto_clock_out: boolean
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          created_by: string | null
+          updated_by: string | null
+          deleted_at: string | null
+        }
+        Insert: {
+          id?: string
+          tenant_id: string
+          late_tolerance_minutes?: number
+          geofence_radius_meters?: number
+        }
+        Update: {
+          late_tolerance_minutes?: number
+          early_leave_tolerance_minutes?: number
+          geofence_radius_meters?: number
+          require_photo?: boolean
+          require_location?: boolean
+          auto_clock_out?: boolean
+        }
+      }
     }
     Views: Record<string, never>
     Functions: Record<string, never>
