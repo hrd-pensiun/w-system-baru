@@ -10,6 +10,7 @@ import {
   CalendarDays,
   Wallet,
   Database,
+  PiggyBank,
   Briefcase,
   ShoppingCart,
   FolderKanban,
@@ -35,6 +36,7 @@ const navGroups = [
     items: [
       { href: '/hr/karyawan', label: 'Karyawan', icon: Users },
       { href: '/hr/master-data', label: 'Master Data', icon: Database },
+      { href: '/hr/salary-config', label: 'Komponen Gaji', icon: PiggyBank },
       { href: '/hr/payroll-config', label: 'Payroll Config', icon: Wallet },
       { href: '/hr/presensi', label: 'Presensi', icon: Clock },
       { href: '/hr/cuti', label: 'Cuti & Lembur', icon: CalendarDays },
