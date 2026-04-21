@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useTransition, useEffect } from "react"
+import { useState, useTransition } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,7 +10,6 @@ import { DollarSign, Wallet } from "lucide-react"
 import {
   type PayrollSlipRow,
   type PayrollPeriodRow,
-  getAllPayrollSlips,
 } from "./actions"
 
 const fmtRupiah = (n: number) =>
@@ -29,18 +28,12 @@ const statusConfig: Record<string, { label: string; variant: "default" | "outlin
 
 interface ThrTabProps {
   periods: PayrollPeriodRow[]
+  initialSlips: PayrollSlipRow[]
 }
 
-export function ThrTab({ periods }: ThrTabProps) {
+export function ThrTab({ periods, initialSlips }: ThrTabProps) {
   const [isPending, startTransition] = useTransition()
-  const [slips, setSlips] = useState<PayrollSlipRow[]>([])
-
-  useEffect(() => {
-    startTransition(async () => {
-      const data = await getAllPayrollSlips()
-      setSlips(data)
-    })
-  }, [])
+  const [slips, setSlips] = useState<PayrollSlipRow[]>(initialSlips)
 
   // Aggregate by employee for THR view
   const thrData = slips.reduce<Map<string, { name: string; nik: string; totalBruto: number; totalPph: number; count: number }>>((map, slip) => {

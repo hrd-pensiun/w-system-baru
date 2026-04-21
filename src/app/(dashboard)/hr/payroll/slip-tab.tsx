@@ -24,24 +24,24 @@ const fmtRupiah = (n: number) =>
 
 interface SlipTabProps {
   periods: PayrollPeriodRow[]
+  initialSlips: PayrollSlipRow[]
 }
 
-export function SlipTab({ periods }: SlipTabProps) {
+export function SlipTab({ periods, initialSlips }: SlipTabProps) {
   const [isPending, startTransition] = useTransition()
   const [selectedPeriod, setSelectedPeriod] = useState<string>("")
-  const [slips, setSlips] = useState<PayrollSlipRow[]>([])
+  const [slips, setSlips] = useState<PayrollSlipRow[]>(initialSlips)
   const [expandedSlip, setExpandedSlip] = useState<string | null>(null)
 
   useEffect(() => {
     if (periods.length > 0 && !selectedPeriod) {
       const first = periods[0]
       setSelectedPeriod(first.id)
-      startTransition(async () => {
-        const data = await getPayrollSlips(first.id)
-        setSlips(data)
-      })
+      // Filter initialSlips for the first period
+      const filtered = initialSlips.filter((s) => s.period_id === first.id)
+      if (filtered.length > 0) setSlips(filtered)
     }
-  }, [periods, selectedPeriod])
+  }, [periods, selectedPeriod, initialSlips])
 
   const handlePeriodChange = (periodId: string) => {
     setSelectedPeriod(periodId)

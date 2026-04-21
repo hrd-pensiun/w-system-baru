@@ -237,7 +237,6 @@ export function PeriodTab({ initialData }: PeriodTabProps) {
                     size="sm"
                     className="text-xs"
                     onClick={() => handleAction("generate", p.id)}
-                    disabled={isPending}
                   >
                     <Play className="mr-1 h-3 w-3" />
                     Generate
@@ -249,7 +248,6 @@ export function PeriodTab({ initialData }: PeriodTabProps) {
                     size="sm"
                     className="text-xs"
                     onClick={() => handleAction("approve", p.id)}
-                    disabled={isPending}
                   >
                     <CheckCircle2 className="mr-1 h-3 w-3" />
                     Approve
@@ -261,7 +259,6 @@ export function PeriodTab({ initialData }: PeriodTabProps) {
                     size="sm"
                     className="text-xs"
                     onClick={() => handleAction("pay", p.id)}
-                    disabled={isPending}
                   >
                     <Banknote className="mr-1 h-3 w-3" />
                     Bayar
@@ -273,7 +270,6 @@ export function PeriodTab({ initialData }: PeriodTabProps) {
                     size="sm"
                     className="text-xs text-red-600"
                     onClick={() => handleAction("cancel", p.id)}
-                    disabled={isPending}
                   >
                     <XCircle className="mr-1 h-3 w-3" />
                   </Button>
@@ -317,7 +313,6 @@ export function PeriodTab({ initialData }: PeriodTabProps) {
           size="sm"
           className="bg-zinc-900 text-white hover:bg-zinc-700"
           onClick={() => setShowCreate(true)}
-          disabled={isPending}
         >
           <Plus className="mr-1.5 h-3.5 w-3.5" />
           Buat Periode

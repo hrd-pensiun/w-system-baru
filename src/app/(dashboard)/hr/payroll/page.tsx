@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { PeriodTab } from "./period-tab"
 import { SlipTab } from "./slip-tab"
 import { ThrTab } from "./thr-tab"
-import { getPayrollPeriods } from "./actions"
+import { getPayrollPeriods, getAllPayrollSlips } from "./actions"
 
 export const metadata: Metadata = {
   title: "Payroll · W System",
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function PayrollPage() {
   const periods = await getPayrollPeriods()
+  const slips = await getAllPayrollSlips()
 
   return (
     <div className="space-y-6">
@@ -38,13 +39,13 @@ export default async function PayrollPage() {
 
         <TabsContent value="slip" className="mt-4">
           <Suspense fallback={<Card><CardContent className="p-12 text-center text-zinc-400">Memuat data slip...</CardContent></Card>}>
-            <SlipTab periods={periods} />
+            <SlipTab periods={periods} initialSlips={slips} />
           </Suspense>
         </TabsContent>
 
         <TabsContent value="thr" className="mt-4">
           <Suspense fallback={<Card><CardContent className="p-12 text-center text-zinc-400">Memuat data THR...</CardContent></Card>}>
-            <ThrTab periods={periods} />
+            <ThrTab periods={periods} initialSlips={slips} />
           </Suspense>
         </TabsContent>
       </Tabs>
